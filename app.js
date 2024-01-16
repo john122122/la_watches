@@ -1,6 +1,7 @@
 console.log("Start modify WebSite");
 const express = require("express");
 const app = express();
+const router = require("./router.js");
 
 // Call MongoDB 
 const db = require("./server").db();
@@ -18,5 +19,6 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 // 4. Routing codes
+app.use("/", router);
 
 module.exports = app;
