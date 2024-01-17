@@ -1,12 +1,12 @@
-// const { 
-//     shapeIntoMongooseObjectId, 
-//     lookup_auth_member_following, 
-//     lookup_auth_member_liked
-//   } = require("../lib/config");
+const { 
+    shapeIntoMongooseObjectId, 
+    lookup_auth_member_following, 
+    lookup_auth_member_liked
+  } = require("../lib/config");
   const Definer = require("../lib/mistake");
   const MemberModel = require("../schema/member.model");
-  //const assert = require("assert");
-  //const bcrypt = require("bcryptjs");
+  const assert = require("assert");
+  const bcrypt = require("bcryptjs");
 //   const View = require("./View");
 //   const Like = require("./Like");
   
