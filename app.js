@@ -16,5 +16,6 @@ app.set("view engine", "ejs");
 
 // 4. Routing codes
 app.use("/", router);
+//app.use("/shop", router_bssr);
 
 module.exports = app;
