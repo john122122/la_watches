@@ -1,8 +1,8 @@
-const { 
-    shapeIntoMongooseObjectId, 
-    lookup_auth_member_following, 
-    lookup_auth_member_liked
-  } = require("../lib/config");
+// const { 
+//     shapeIntoMongooseObjectId, 
+//     lookup_auth_member_following, 
+//     lookup_auth_member_liked
+//   } = require("../lib/config");
   const Definer = require("../lib/mistake");
   const MemberModel = require("../schema/member.model");
   const assert = require("assert");
@@ -19,8 +19,8 @@ const {
       try {
         const salt = await bcrypt.genSalt();
         input.mb_password = await bcrypt.hash(input.mb_password, salt);
-  
         const new_member = new this.memberModel(input);
+          
         let result;
         try {
           result = await new_member.save();
