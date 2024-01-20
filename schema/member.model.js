@@ -5,7 +5,6 @@ const {
     ordernary_enums 
 } = require("../lib/config");
 
-
 const memberSchema = new mongoose.Schema(
     {
         mb_nick: {
@@ -28,7 +27,7 @@ const memberSchema = new mongoose.Schema(
             required: false,
             default: "USER",
             enum: {
-                values: member_status_enums,
+                values: member_type_enums,
                 message: "{VALUE} is not among permitted values"
             }
         },
