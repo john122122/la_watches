@@ -6,7 +6,7 @@
   const Definer = require("../lib/mistake");
   const MemberModel = require("../schema/member.model");
   const assert = require("assert");
-  //const bcrypt = require("bcryptjs");
+  const bcrypt = require("bcryptjs");
 //   const View = require("./View");
 //   const Like = require("./Like");
   
@@ -17,8 +17,8 @@ class Member {
 
     async signupData(input) {
         try {
-            //const salt = await bcrypt.genSalt();           
-            //input.mb_password = await bcrypt.hash(input.mb_password, salt);           
+            const salt = await bcrypt.genSalt();           
+            input.mb_password = await bcrypt.hash(input.mb_password, salt);           
             const new_member = new this.memberModel(input);
                   
             let result;           
@@ -42,10 +42,14 @@ class Member {
                 .findOne(         
                     { mb_nick: input.mb_nick },            
                     { mb_nick: 1, mb_password: 1 })                
-                .exec();            
-             assert.ok(member, Definer.auth_err3);
-            // console.log(member);
-            const isMatch = input.mb_password === member.mb_password;         
+                .exec();   
+            
+            assert.ok(member, Definer.auth_err3);
+            
+            const isMatch = await bcrypt.compare(
+                input.mb_password,
+                member.mb_password
+            );
             assert.ok(isMatch, Definer.auth_err4);
 
             return await this.memberModel
