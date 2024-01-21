@@ -1,19 +1,29 @@
-// const express = require("express");
-// const router_bssr = express.Router();
-// const shopController = require("./controllers/shopController");
+const express = require("express");
+const router_bssr = express.Router();
+const shopController = require("./controllers/shopController");
 
-// /**********************************
-//  *          REST EJS              *
-//  *********************************/
+/**********************************
+ *          REST EJS              *
+ *********************************/
 
-// // member routers
-// router_bssr.get("/signup", shopController.getSignupMyShop);
-// router_bssr.post("/signup", shopController.signupProcess);
+// member routers
+router_bssr
+    .get("/signup", shopController.getSignupMyShop)
+    .post("/signup", shopController.signupProcess);
 
-// router_bssr.get("/login", shopController.getLoginMyShop);
-// router_bssr.post("/login", shopController.loginProcess);
+router_bssr
+    .get("/login", shopController.getLoginMyShop)
+    .post("/login", shopController.loginProcess);
 
-// router_bssr.get("/logout", shopController.logoutProcess);
+router_bssr
+    .get("/logout", shopController.logoutProcess);
+    
+router_bssr
+    .get("/check-me", shopController.checkSessions);
 
 
-// module.exports = router_bssr;
+router_bssr
+    .get("/products/menu", shopController.getMyShopData);
+
+
+module.exports = router_bssr;

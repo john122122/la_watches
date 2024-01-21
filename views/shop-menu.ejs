@@ -1,0 +1,16 @@
+<%- include('includes/header') %>
+
+<body>
+    <h1>My shop page</h1>
+
+    <% if(!member)  { %>
+
+    <h2>siz authenticated emassiz</h2>
+    <% } else { %>
+
+    <h1>Siz authenticated bolgansiz</h1>
+    <% } %>
+</body>
+
+
+<%- include('includes/footer') %>

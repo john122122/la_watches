@@ -28,13 +28,18 @@ app.use(
         saveUninitialized: true,
     })
 );
+app.use(function(req, res, next) {
+    res.locals.member = req.session.member;
+    next();
+});
 
 // 3. Views codes
 app.set("views", "views");
 app.set("view engine", "ejs");
 
 // 4. Routing codes
+app.use("/shop", router_bssr);
 app.use("/", router);
-//app.use("/shop", router_bssr);
+
 
 module.exports = app;
