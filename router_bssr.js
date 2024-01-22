@@ -1,6 +1,7 @@
 const express = require("express");
 const router_bssr = express.Router();
 const shopController = require("./controllers/shopController");
+const productController = require("./controllers/productController");
 
 /**********************************
  *          REST EJS              *
@@ -24,6 +25,12 @@ router_bssr
 
 router_bssr
     .get("/products/menu", shopController.getMyShopData);
+
+router_bssr.post("/products/create",
+    shopController.validateAuthShop,
+    productController.addNewProduct);
+
+router_bssr.post("products/edit/:id", productController.updateChosenProduct);
 
 
 module.exports = router_bssr;
