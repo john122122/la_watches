@@ -2,7 +2,7 @@ const express = require("express");
 const router_bssr = express.Router();
 const shopController = require("./controllers/shopController");
 const productController = require("./controllers/productController");
-const { uploadProductImage } = require("./utils/upload-multer");
+const uploader_product = require("./utils/upload-multer")("products");
 
 /**********************************
  *          REST EJS              *
@@ -29,7 +29,7 @@ router_bssr
 
 router_bssr.post("/products/create",
     shopController.validateAuthShop,
-    uploadProductImage.single("product_image"),
+    uploader_product.array("product_images", 5),
     productController.addNewProduct);
 
 router_bssr.post("products/edit/:id", productController.updateChosenProduct);
