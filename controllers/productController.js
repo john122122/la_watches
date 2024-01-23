@@ -57,7 +57,7 @@ productController.addNewProduct = async (req, res) => {
         //              </script>`;
         // res.end(html);
 
-        // res.send("ok");
+        res.send("ok");
     } catch (err) {
         console.log(`ERROR: cont/addNewProduct, ${err.message}`);
     }

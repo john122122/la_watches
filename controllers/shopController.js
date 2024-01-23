@@ -97,7 +97,7 @@ shopController.validateAuthShop = (req, res, next) => {
     } else 
     res.json({
         state: "fail", 
-        message: "only authenticated members with restaurant type",
+        message: "only authenticated members with shop type",
     });
 };
 
