@@ -24,7 +24,7 @@ const productSchema = new mongoose.Schema(
         product_status: {
             type: String,
             required: false,
-            default: "PAUSED",
+            default: "PROCESS",
             enum: {
                 values: product_status_enums,
                 message: "{VALUES} is not among permitted values",
@@ -66,7 +66,7 @@ const productSchema = new mongoose.Schema(
             },
         },
         product_volume: {
-            type: Number,
+            type: String,
             required: function () {
                 return this.product_collection === "material";
             },
