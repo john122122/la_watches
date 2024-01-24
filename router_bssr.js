@@ -25,7 +25,7 @@ router_bssr
 
 
 router_bssr
-    .get("/products/menu", shopController.getMyShopData);
+    .get("/products/menu", shopController.getMyShopProducts);
 
 router_bssr.post("/products/create",
     shopController.validateAuthShop,
