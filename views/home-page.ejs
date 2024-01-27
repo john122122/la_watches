@@ -1,0 +1,178 @@
+<%- include('includes/header') %>
+
+<link rel="stylesheet" type="text/css" href="/css/home.css"/>
+
+<body>
+    <div class="group_name">
+    <ul class="nav justify-content-center">
+        <li class="nav-item" style="cursor: pointer">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+
+        <% if(!member) { %>
+            <li class="nav-item" style="cursor: pointer">
+                <a class="nav-link" href="/shop/sign-up">Singup</a>
+              </li>
+            <li class="nav-item" style="cursor: pointer">
+                <a class="nav-link" href="/shop/login">Login</a>
+              </li>
+        <% } else if (member.mb_type === 'ADMIN') { %>    
+            <li class="nav-item" style="cursor: pointer">
+                <a class="nav-link" href="/shop/all-shop">AllResto</a>
+              </li>
+              <li class="nav-item" style="cursor: pointer" 
+              onclick="return confirm('Do you want to logout?')">
+                <a class="nav-link" href="/shop/logout">Logout</a>
+              </li>
+        <% } else { %>
+            <li class="nav-item" style="cursor: pointer">
+                <a class="nav-link" href="/shop/products/menu">MyResto</a>
+              </li>
+              <li class="nav-item" style="cursor: pointer" 
+              onclick="return confirm('Do you want to logout?')">
+                <a class="nav-link" href="/shop/logout">Logout</a>
+              </li>
+        <% } %>
+        </ul>
+    </div>
+
+        <div class="animation-wrapper">
+            <div class="layered-animations">
+              <svg class="large shape" viewBox="0 0 96 96">
+                <defs>
+                  <linearGradient id="circleGradient" x1="0%" x2="100%" y1="20%" y2="80%">
+                    <stop stop-color="#373734" offset="0%"/>
+                    <stop stop-color="#242423" offset="50%"/>
+                    <stop stop-color="#0D0D0C" offset="100%"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="48" cy="48" r="28" fill-rule="evenodd" stroke-linecap="square" fill="url(#circleGradient)"/>
+              </svg>
+              <svg class="small shape color-red" viewBox="0 0 96 96">
+                <polygon fill-rule="evenodd" points="48 17.28 86.4 80.11584 9.6 80.11584" stroke-linecap="square"/>
+              </svg>
+              <svg class="large shape" viewBox="0 0 96 96">
+                <defs>
+                  <linearGradient id="triangleGradient" x1="0%" x2="100%" y1="20%" y2="80%">
+                    <stop stop-color="#373734" offset="0%"/>
+                    <stop stop-color="#242423" offset="50%"/>
+                    <stop stop-color="#0D0D0C" offset="100%"/>
+                  </linearGradient>
+                </defs>
+                <polygon fill-rule="evenodd" points="48 17.28 86.4 80.11584 9.6 80.11584" stroke-linecap="square" fill="url(#triangleGradient)"/>
+              </svg>
+              <svg class="x-small shape" viewBox="0 0 96 96">
+                <polygon fill-rule="evenodd" points="48 17.28 86.4 80.11584 9.6 80.11584" stroke-linecap="square"/>
+              </svg>
+              <svg class="x-small shape" viewBox="0 0 96 96">
+                <rect width="48" height="48" x="24" y="24" fill-rule="evenodd" stroke-linecap="square"/>
+              </svg>
+              <svg class="small shape color-red" viewBox="0 0 96 96">
+                <rect width="48" height="48" x="24" y="24" fill-rule="evenodd" stroke-linecap="square"/>
+              </svg>
+              <svg class="large shape" viewBox="0 0 96 96">
+                <defs>
+                  <linearGradient id="rectGradient" x1="0%" x2="100%" y1="20%" y2="80%">
+                    <stop stop-color="#373734" offset="0%"/>
+                    <stop stop-color="#242423" offset="50%"/>
+                    <stop stop-color="#0D0D0C" offset="100%"/>
+                  </linearGradient>
+                </defs>
+                <rect width="48" height="48" x="24" y="24" fill-rule="evenodd" stroke-linecap="square" fill="url(#rectGradient)"/>
+              </svg>
+              <svg class="small shape color-red" viewBox="0 0 96 96">
+                <circle cx="48" cy="48" r="32" fill-rule="evenodd" stroke-linecap="square"/>
+              </svg>
+              <svg class="x-small shape" viewBox="0 0 96 96">
+                <circle cx="48" cy="48" r="32" fill-rule="evenodd" stroke-linecap="square"/>
+              </svg>
+            </div>
+        </div>
+
+    <script>
+        function fitElementToParent(el, padding) {
+          let timeout = null;
+            function resize() {
+              if (timeout) clearTimeout(timeout);
+              anime.set(el, {scale: 1});
+              let pad = padding || 0;
+              let parentEl = el.parentNode;
+              let elOffsetWidth = el.offsetWidth - pad;
+              let parentOffsetWidth = parentEl.offsetWidth;
+              let ratio = parentOffsetWidth / elOffsetWidth;
+              timeout = setTimeout(anime.set(el, {scale: ratio}), 10);
+            }
+            resize();
+            window.addEventListener('resize', resize);
+          }
+          
+          const layeredAnimation = (function() {
+          
+            let transformEls = document.querySelectorAll('.transform-progress');
+            let layeredAnimationEl = document.querySelector('.layered-animations');
+            let shapeEls = layeredAnimationEl.querySelectorAll('.shape');
+            let triangleEl = layeredAnimationEl.querySelector('polygon');
+            let trianglePoints = triangleEl.getAttribute('points').split(' ');
+            let easings = ['easeInOutQuad', 'easeInOutCirc', 'easeInOutSine', 'spring'];
+          
+            fitElementToParent(layeredAnimationEl);
+          
+            function createKeyframes(value) {
+                let keyframes = [];
+              for (let i = 0; i < 30; i++) keyframes.push({ value: value });
+              return keyframes;
+            }
+          
+            function animateShape(el) {
+              let circleEl = el.querySelector('circle');
+              let rectEl = el.querySelector('rect');
+              let polyEl = el.querySelector('polygon');
+              let animation = anime.timeline({
+                targets: el,
+                duration: function() { return anime.random(600, 2200); },
+                easing: function() { return easings[anime.random(0, easings.length - 1)]; },
+                complete: function(anim) { animateShape(anim.animatables[0].target); },
+              })
+              .add({
+                translateX: createKeyframes(function(el) { 
+                  return el.classList.contains('large') ? anime.random(-300, 300) : anime.random(-520, 520);
+                }),
+                translateY: createKeyframes(function(el) { 
+                  return el.classList.contains('large') ? anime.random(-110, 110) : anime.random(-280, 280);
+                }),
+                rotate: createKeyframes(function() { return anime.random(-180, 180); }),
+              }, 0);
+              if (circleEl) {
+                animation.add({
+                  targets: circleEl,
+                  r: createKeyframes(function() { return anime.random(32, 72); }),
+                }, 0);
+              }
+              if (rectEl) {
+                animation.add({
+                  targets: rectEl,
+                  width: createKeyframes(function() { return anime.random(64, 120); }),
+                  height: createKeyframes(function() { return anime.random(64, 120); }),
+                }, 0);
+              }
+              if (polyEl) {
+                animation.add({
+                  targets: polyEl,
+                  points: createKeyframes(function() { 
+                    let scale = anime.random(72, 180) / 100;
+                    return trianglePoints.map(function(p) { return p * scale; }).join(' ');
+                  }),
+                }, 0);
+              }
+          
+            }
+          
+            for (let i = 0; i < shapeEls.length; i++) {
+              animateShape(shapeEls[i]);
+            }
+          
+          })();
+    </script>
+</body>
+
+<%- include('includes/footer') %>

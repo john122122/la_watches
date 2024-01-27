@@ -10,8 +10,11 @@ const uploader_product = require("./utils/upload-multer")("products");
 
 // member routers
 router_bssr
-    .get("/signup", shopController.getSignupMyShop)
-    .post("/signup", shopController.signupProcess);
+    .get("/", shopController.home);
+
+router_bssr
+    .get("/sign-up", shopController.getSignupMyShop)
+    .post("/sign-up", shopController.signupProcess);
 
 router_bssr
     .get("/login", shopController.getLoginMyShop)
@@ -23,20 +26,20 @@ router_bssr
 router_bssr
     .get("/check-me", shopController.checkSessions);
 
-
 router_bssr
     .get("/products/menu", shopController.getMyShopProducts);
 
-router_bssr.post("/products/create",
-    shopController.validateAuthShop,
-    uploader_product.array("product_images", 5),
-    productController.addNewProduct
+router_bssr
+    .post("/products/create",
+        shopController.validateAuthShop,
+        uploader_product.array("product_images", 5),
+        productController.addNewProduct
 );
 
-router_bssr.post("/products/edit/:id",
-    shopController.validateAuthShop,
-    productController.updateChosenProduct
+router_bssr
+    .post("/products/edit/:id",
+        shopController.validateAuthShop,
+        productController.updateChosenProduct
 );
-
 
 module.exports = router_bssr;
