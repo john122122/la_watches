@@ -42,4 +42,10 @@ router_bssr
         productController.updateChosenProduct
 );
 
+// router_bssr
+//     .post("/events",
+//         shopController.validateAuthShop,
+//         eventsController.eventChosenProduct
+// );
+
 module.exports = router_bssr;

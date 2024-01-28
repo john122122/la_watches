@@ -1,7 +1,48 @@
 <%- include('includes/header') %>
 
+<link rel="stylesheet" text="text/css" href="/css/login.css" />
+
 <body>
-    <h1>Login page</h1>
+    <div class="container">
+        <div class="drop">
+
+            <div class="login_top">
+                <span>Access to the Website</span>
+                <div>Go Back:<a href="/shop">  Home</a></div>
+                <p>Are you registered?:<a href="/shop/signup">  Sign up</a></p>
+            </div>
+
+            <div class="content">
+                <h2>Login</h2>
+                <form action="/shop/login" method="POST">
+                    <div class="inputBox">
+                        <input 
+                           type="text" 
+                           name="mb_nick" 
+                           placeholder="Username" 
+                           value="" 
+                           required
+                        />
+                    </div>
+                    <div class="inputBox">
+                        <input 
+                            type="password"
+                            name="mb_password" 
+                            placeholder="Password"
+                            value="" 
+                            required
+                        />
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" value="Login"/>
+                    </div> 
+                </form>
+            </div>
+
+        </div>
+        <a href="#" class="btns">Forget Password</a>
+        <a href="#" class="btns signup">Signup</a>
+    </div>
 </body>
 
 
