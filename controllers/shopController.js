@@ -42,7 +42,7 @@ shopController.getSignupMyShop = async (req, res) => {
 
 shopController.signupProcess = async (req, res) => {
     try {
-      console.log("POST: cont/signup");
+      console.log("POST: cont/signupProcess");
         const data = req.body,
             member = new Member(),
             new_member = await member.signupData(data);
@@ -51,7 +51,7 @@ shopController.signupProcess = async (req, res) => {
         res.redirect("/shop/products/menu");
         
     } catch (err) {
-        console.log(`ERROR, cont/signup, ${err.message}`);
+        console.log(`ERROR, cont/signupProcess, ${err.message}`);
         res.json({ state: "fail", message: err.message });
     }
 };
@@ -68,36 +68,31 @@ shopController.getLoginMyShop = async (req, res) => {
 
 shopController.loginProcess = async (req, res) => {
     try {
-        console.log("POST: cont/login");
+        console.log("POST: cont/loginProcess");
         const data = req.body,
-            member = new Member(),
-            result = await member.loginData(data);
-
-        // req.session.member = result;
-        // req.session.save(function () {
-        //     result.mb_type ==="ADMIN"
-        //     ? res.redirect("/shop/all-shop")
-        //     : res.redirect("/shop/products/menu");
-        // });
+        member = new Member(),
+        result = await member.loginData(data);
 
         req.session.member = result;
         req.session.save(function () {
-            res.redirect("/shop/products/menu");
+            result.mb_type ==="ADMIN"
+                ? res.redirect("/shop/all-shop", "/shop/events")
+                : res.redirect("/shop/products/menu");
         });
     } catch (err) {
-        console.log(`ERROR: cont/login, ${err.message}`);
+        console.log(`ERROR: cont/loginProcess, ${err.message}`);
         res.json({ state: "failed", message: err.message });
     }
 };
 
 shopController.logoutProcess = (req, res) => {
     try {
-        console.log("GET cont/logout");
+        console.log("GET cont/logoutProcess");
         req.session.destroy(function () {
             res.redirect("/shop");
         });
     } catch (err) {
-        console.log(`ERROR, cont/logout, ${err.message}`);
+        console.log(`ERROR, cont/logoutProcess, ${err.message}`);
         res.json({ state: "fail", message: err.message });
     }
 };
