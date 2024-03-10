@@ -1,29 +1,88 @@
 <%- include('includes/header') %>
 
-<link rel="stylesheet" text="text/css" href="/css/signup.css" />
+<link rel="stylesheet" text="text/css" href="/css/login.css" />
 
 
 <body>
-    <p style="background-image: url('nature.jpg');"</p>
+   
+    
     <div class="container">
         <div class="drop">
             <div class="content">
-                <h2>Sign in</h2>
-                <form>
-                    <div class="inputBox">
-                        <input type="text" placeholder="Username">
+                <h2>Login</h2>
+                <form
+                onsubmit=" return validateSignUpForm()"
+                action="/shop/sign-up"
+                class="login_container"
+                method="POST"
+                enctype="multipart/form-data">
+            
+                <div class="login_frame" style="width: 650px; height: 730px;">
+                  <div class="login_top">
+                    <span>Registration</span>
+                    <div>Return to Home Page <a href="/shop" style="color: #6440fb"> Home</a></div>
+                    <p>Not registered yet? <a href="/shop/login" style="color: #6440fb"> Login</a></p>
+                  </div>
+            
+                  <div class="sign_input_frame">
+            
+                    <div class="sign_up_frame">
+                      <label for="">Username</label>
+                      <input class="mb_nick" type="text" name="mb_nick"  placeholder="Username" value="" required>
                     </div>
-                    <div class="inputBox">
-                        <input type="password" placeholder="Password">
+            
+                    <div class="sign_up_frame">
+                      <label for="">Phone number</label>
+                      <input class="mb_phone" type="text" name="mb_phone"  placeholder="Phone number" value="" required>
                     </div>
-                    <div class="inputBox">
-                        <input type="submit" value="Login">
+            
+                    <div></div>
+                  </div>
+                  <div class="sign_input_frame">
+            
+                    <div class="sign_up_frame">
+                      <label for="">Password</label>
+                      <input class="mb_password" type="password" name="mb_password"  placeholder="Enter password" value="" required>
                     </div>
-                </form>
-            </div>
+            
+                    <div class="sign_up_frame">
+                      <label for="">Re-enter the password</label>
+                      <input class="mb_confirm_password" type="password" name="mb_confirm_password"  placeholder="Confirm password" value="" required>
+                    </div>
+            
+                    <div></div>
+                  </div>
+            
+                  <div class="login_input_frame">
+                    <div class="media_frame">
+                      <img class="upload_img_frame" src="/images/nature.jpg" alt="sign up images">
+                      <div class="upload_container">
+                        <span class="media_text">Shop picture</span>
+                        <div class="filebox bs3-primary preview-image">
+                          <input class="upload_name" type="text" value="Select a picture" disabled="disabled">
+                          <label for="input_file">Upload Image</label>
+                          <input type="file" id="input_file" name="shop_img"  placeholder="Upload a picture" class="upload-hidden form-control-file shop_img" >
+                        </div>
+            
+                        <p 
+                          class="thumbnail_desc">Upload your store image here 
+                          <br>    Important instructions: .jpg, .jpeg or .png 
+                          <br>           There should be no text on the image 
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+            
+                  <button class="login_btn btn" name="signup" type="submit">Registration</button>
+            
+                </div>
+            
+              </form>
+            
+          </div>
         </div>
-        <a href="#" class="btns">Forget Password</a>
-        <a href="#" class="btns signup">Signup</a>
+        <a href="#" class="btns"></a>
+        <a href="#" class="btns signup"></a>
     </div>
 </body>
 

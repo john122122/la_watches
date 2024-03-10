@@ -17,8 +17,8 @@ body {
 
 .container .drop {
     position: relative;
-    width: 750px;
-    height: 750px;
+    width: 950px;
+    height: 950px;
     box-shadow: inset 20px 20px 20px rgba(0,0,0,0.05),
     25px 35px 20px rgba(0,0,0,0.05),
     25px 35px 20px rgba(0,0,0,0.05),
@@ -38,7 +38,7 @@ body {
     content: '';
     position: absolute;
     top: 72px;
-    left: 186px;
+    left: 252px;
     width: 55px;
     height: 55px;
     border-radius: 50%;
@@ -50,12 +50,24 @@ body {
     content: '';
     position: absolute;
     top: 90px;
-    left: 110;
+    left: 202px;
     width: 15px;
     height: 15px;
     border-radius: 50%;
     background: #fff;
     opacity: 0.9;
+}
+
+.container .drop .content {
+    position: relative;
+    display: flex;
+    margin-top: 70px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 40px;
+    gap: 15px;
 }
 
 
@@ -79,8 +91,8 @@ body {
     margin-top: 7px;
     font-family: "Poppins";
     font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
+    font-weight: 500;
+    font-size: 17px;
     line-height: 26px;
 }
 
@@ -88,21 +100,9 @@ body {
     font-family: "Poppins";
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    margin-top: 6px;
+    font-size: 15px;
     line-height: 22px;
-}
-
-
-
-.container .drop .content {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 40px;
-    gap: 15px;
 }
 
 .container .drop .content h2 {
@@ -114,7 +114,7 @@ body {
 .container .drop .content form {
     display: flex;
     flex-direction: column; 
-    gap: 20px;
+    gap: 27px;
     justify-content: center;
     align-items: center;
 }
@@ -216,9 +216,9 @@ body {
 }
 
 .btns.signup {
-    top: 223px;
+    top: 574px;
     bottom: 150px;
-    right: -5px;
+    right: -86px;
     width: 143px;
     height: 145px;
     border-radius: 49% 51% 52% 48% / 63% 59% 41% 37%;
@@ -238,3 +238,139 @@ body {
 .btns:hover {
     border-radius: 50%;
 }
+
+/* Signup css*/
+.login_frame .sign_input_frame {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sign_input_frame .sign_up_frame {
+    position: relative;
+    margin-top: 15px;
+    width: 49%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.sign_up_frame label {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.sign_up_frame input {
+   position: relative;
+   margin-top: 1px;
+   padding-left: 8px;
+   width: 100%;
+   height: 48px;
+   background: #f6f5f5;
+   border: 1px solid #dddddd;
+   border-radius: 8px;
+}
+.media_frame {
+    position: relative;
+    margin-top: 15px;
+    width: 100%;
+    height: 250px;
+    /* border: 1px solid red; */
+    display: flex;
+    flex: row;
+    justify-content: space-between;
+}
+
+.media_frame .upload_img_frame {
+    position: relative;
+    width: 290px;
+    height: 100%;
+    display: flex;
+    border-radius: 15px;
+}
+
+.media_frame .upload_container {
+    position: relative;
+    margin-left: 30px;
+    width: 74%;
+    height: 100%;
+    display: flex;
+    flex-direction: column ;
+}
+
+.media_text {
+    font-family: "GT Walshiem Pro";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    color: #140342;
+}
+
+.filebox {
+    margin-top: 25px;
+    display: flex;
+    height: 55px;
+}
+
+.filebox input[type="file"]{
+   position: relative;
+   width: 1px;
+   height: 1px;
+   overflow: hidden;
+   clip: rect(0, 0, 0, 0);
+   border: 0;
+}
+
+.filebox label {
+    /* position: relative; */
+    /* padding: 15px; */
+    width: 135px;
+    height: 55px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #50607a;
+    border-radius: 0px, 8px, 8px, 0px;
+
+    font-family: 'GT WAlsheim Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+    color: #ffffff;
+}
+
+.filebox .upload-name {
+    position: relative;
+    padding: 20px;
+    width: 85%;
+    height: 100%;
+
+    display: flex;
+    background: #eaebee;
+   
+    border: 1px solid #dddddd;
+    border-radius: 8px, 0px, 0px, 8px;
+}
+
+.thumbnail_desc {
+    height: 25px;
+    /* margin-top: 0px; */
+    font-family: "GT Walsheim Pro";
+    font-style: normal;
+    font-weight: 400;
+    /* font: 85px; */
+    font-size: 15px;
+    line-height: 26px;
+    color: #554bc3;
+}
+
