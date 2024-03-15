@@ -3,47 +3,47 @@
 <link rel="stylesheet" text="text/css" href="/css/login.css" />
 
 <body>
-    <div class="container">
-        <div class="drop">
+   <form 
+      class="login_container" 
+      action="/shop/login" 
+      method="POST">
+     <div class="login_frame" style="height: 460px">
+       <div class="login_top">
+          <span>Access to the Website</span>
+          <div>
+            Go Back: <a href="/shop" style="color: #6440fb">Home</a>
+          </div>
+          <p>
+            Are you registered?: 
+             <a href="/shop/sign-up" style="color: #6440fb">Sign up</a>
+          </p>
+       </div>
 
-            <div class="login_top">
-                <span>Access to the Website</span>
-                <div>Go Back:<a href="/shop">  Home</a></div>
-                <p>Are you registered?:<a href="/shop/sign-up">  Sign up</a></p>
-            </div>
-
-            <div class="content">
-                <h2>Login</h2>
-                <form action="/shop/login" method="POST">
-                    <div class="inputBox">
-                        <input 
-                           type="text" 
-                           name="mb_nick" 
-                           placeholder="Username" 
-                           value="" 
-                           required
-                        />
-                    </div>
-                    <div class="inputBox">
-                        <input 
-                            type="password"
-                            name="mb_password" 
-                            placeholder="Password"
-                            value="" 
-                            required
-                        />
-                    </div>
-                    <div class="inputBox">
-                        <input type="submit" value="Login"/>
-                    </div> 
-                </form>
-            </div>
-
+       <div class="login_input_frame">
+          <div class="login_input_container">
+            <label>Username:</label>
+              <input 
+                type="text" 
+                name="mb_nick"
+                placeholder="Username:"
+                value=""
+                required
+              />
+          </div>
+          <div class="login_input_container">
+            <label>Enter password:</label>
+              <input 
+                type="password"
+                name="mb_password"
+                placeholder="Enter password:"
+                value=""
+                required
+              />
+          </div>
         </div>
-        <a href="#" class="btns">Forget Password</a>
-        <a href="#" class="btns signup">Signup</a>
+      <button class="login_btn btn" name="login" type="submit"> Enter </button>
     </div>
+  </form>
 </body>
-
 
 <%- include('includes/footer') %>
