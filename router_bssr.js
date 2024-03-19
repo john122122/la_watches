@@ -14,8 +14,10 @@ router_bssr
     .get("/", shopController.home);
 
 router_bssr
-    .get("/sign-up", shopController.getSignupMyShop)
-    .post("/sign-up", uploader_members.single("shop_img"),shopController.signupProcess);
+    .get("/signup", shopController.getSignupMyShop)
+    .post("/signup",
+        uploader_members.single("shop_img"),
+        shopController.signupProcess);
 
 router_bssr
     .get("/login", shopController.getLoginMyShop)
@@ -27,14 +29,11 @@ router_bssr
 router_bssr
     .get("/check-me", shopController.checkSessions);
 
-router_bssr
-    .get("/products/menu", shopController.getMyShopProducts);
-
-router_bssr
-    .post("/products/create",
-        shopController.validateAuthShop,
-        uploader_product.array("product_images", 5),
-        productController.addNewProduct
+router_bssr.get("/products/menu", shopController.getMyShopProducts);
+router_bssr.post("/products/create",
+    shopController.validateAuthShop,
+    uploader_product.array("product_images", 5),
+    productController.addNewProduct
 );
 
 router_bssr

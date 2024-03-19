@@ -1,4 +1,3 @@
-
 const assert = require("assert");
 const Definer = require("../lib/mistake");
 const eventModel = require("../schema/event.model");

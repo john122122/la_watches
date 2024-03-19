@@ -23,7 +23,7 @@ shopController.getMyShopProducts = async (req, res) => {
         res.render("shop-menu", { shop_data: data });
     } catch (err) {
         console.log(`ERROR, cont/getMyShopProducts, ${err.message}`);
-        res.json({ state: "fail", message: err.message });
+        res.redirect("/shop")
     }
 };
 
@@ -53,7 +53,7 @@ shopController.signupProcess = async (req, res) => {
 
         const member = new Member();
         const result = await member.signupData(new_member);
-        assert(result, Definer.general_err1);
+        assert(req.file, Definer.general_err1);
 
         req.session.member = result;
         res.redirect("/shop/products/menu");

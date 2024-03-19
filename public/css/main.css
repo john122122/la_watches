@@ -9,7 +9,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background: #2c261e;
+    background: #ffffff;
     align-items: center;
 }
 
@@ -35,7 +35,7 @@ a {
     font-family: monospace;
 }
 
-.new_dish_txt {
+.new_product_txt {
     font-family: 'Source Serif Pro';
     font-style: normal;
     font-weight: 400;
