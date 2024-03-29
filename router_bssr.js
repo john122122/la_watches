@@ -45,7 +45,7 @@ router_bssr
 // router_bssr
 //     .post("/events",
 //         shopController.validateAuthShop,
-//         eventsController.eventChosenProduct
+//         eventController.eventChosenProduct
 // );
 
 module.exports = router_bssr;

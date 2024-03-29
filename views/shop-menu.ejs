@@ -90,11 +90,12 @@
             <div class="half_input">
                 <label for="">Product type</label>
                 <select class="product_collection" name="product_collection">
-                    <option value="suit" selected>Suit</option>
-                    <option value="pants" >Pants</option>
+                    <option value="suit" selected >Suit</option>
+                    <option value="pants">Pants</option>
                     <option value="shirt">Shirt</option>
-                    <option value="shoes" >Shoes</option>
-                    <option value="accessories" >Accessories</option>
+                    <option value="shoes">Shoes</option>
+                    <option value="accessories">Accessories</option>
+                    <option value="perfume">Perfume</option>
                     <option value="etc">etc</option>
                 </select>
             </div>
@@ -105,20 +106,20 @@
                     <option value="s" >S</option>
                     <option value="m" >M</option>
                     <option value="l" >L</option>
-                    <option value="XL" >XL</option>
+                    <option value="xl" >XL</option>
                     <option value="set" >Set</option>
                 
                 </select>
             </div>
 
             <div class="half_input" id="product_volume" style="display: none;">
-             <label for="">Perfume size</label>
+             <label for="">Perfume volume</label>
              <select class="product_volume" name="product_volume">
-                <option value="0.5" >0.5 ml</option>
-                <option value="1" selected >1 ml</option>
-                <option value="1.2" >1.2 ml</option>
-                <option value="1.5" >1.5 ml</option>
-                <option value="2" >2 ml</option>    
+                <option value="500" >500 ml</option>
+                <option value="1000" selected >1000 ml</option>
+                <option value="1200" >1200 ml</option>
+                <option value="1500" >1500 ml</option>
+                <option value="2000" >2000 ml</option>    
             </select>
             </div>
           </div>
@@ -159,7 +160,7 @@
               </div>
             </div>
           <div class="long_input" style="align-items: flex-end; margin-bottom: 25px;">
-            <button type="submit" class="btn btn-primary " id="create_product">Print Out</button>
+            <button type="submit" class="btn btn-primary " id="create_product">Print</button>
           </div>
         </form>
       </div> 
@@ -170,7 +171,7 @@
     $(function() {
          $(".product_collection").on("change", () => {
             const selected_value = $(".product_collection").val();
-            if(selected_value === 'drink') {
+            if(selected_value === 'perfume') {
                 $("#product_volume").show();
                 $("#product_size").hide();
             } else{
@@ -215,23 +216,27 @@
         product_description = $(".product_description").val(),
         product_status = $(".product_status").val()
 
-
-        if(shop_mb_id == '' || product_name =='' || product_price == '' || product_left_cnt == '' ||
-            product_collection == ''|| product_description == ''  || product_status == '') {
-            alert(`Iltimos hamma malumotlarni to'g'ri kiritng`);
+      if(
+          shop_mb_id == '' || 
+          product_name =='' || 
+          product_price == '' || 
+          product_left_cnt == '' ||
+          product_collection == '' || 
+          product_description == '' || 
+          product_status == '') {
+            alert(`Please enter all information correctly`);
             return false;
         } else return true;
     } 
 
        function previewFileHandler(input, order) {
-      //  console.log(input);
         const image_class_name = input.className;
         const file = $(`.${image_class_name}`).get(0).files[0],
         fileType = file['type'],
         validImageTypes = ['image/jpg', 'image/jpeg', 'image/png'];
 
         if(!validImageTypes.includes(fileType)) {
-            alert(`Iltimos ruhsat etilgan formatdagi rasmlarni yuklang! ( jpeg, jpg, png)` );
+            alert(`Please upload images in a licensed format! ( jpeg, jpg, png)` );
         } else {
             if(file) {
               let reader = new FileReader();

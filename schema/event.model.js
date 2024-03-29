@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 const { board_article_status_enum_list } = require("../lib/config");
 const Schema = mongoose.Schema;

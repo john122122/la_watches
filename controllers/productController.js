@@ -50,7 +50,7 @@ productController.addNewProduct = async (req, res) => {
 
         const result = await product.addNewProductData(data, req.member);
         const html = `<script>
-                        alert("the new product has been installed successfully");
+                        alert("the new product added installed successfully");
                         window.location.replace('/shop/products/menu');
                      </script>`;
         res.end(html);

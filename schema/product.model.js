@@ -47,15 +47,11 @@ const productSchema = new mongoose.Schema(
             type: String,
             required: function () {
                 const sized_list = [
-                    "classic",
-                    "electronic",
-                    "mechanic",
-                    "man",
-                    "women",
-                    "gold",
-                    "silver",
-                    "brilliant",
-                    "etc"
+                    "s",
+                    "m",
+                    "l",
+                    "ml",
+                    "set"
                 ];
                 return sized_list.includes(this.product_collection);
             },
@@ -68,7 +64,7 @@ const productSchema = new mongoose.Schema(
         product_volume: {
             type: String,
             required: function () {
-                return this.product_collection === "material";
+                return this.product_collection === "perfume";
             },
             default: 1,
             enum: {
