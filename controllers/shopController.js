@@ -27,7 +27,6 @@ shopController.getMyShopProducts = async (req, res) => {
     }
 };
 
-
 /********************************************************
 *              BSSR RELATED METHODS                    *
 ********************************************************/
@@ -122,3 +121,43 @@ shopController.checkSessions = (req, res) => {
         res.json({ state: "fail", message: "You are not authenticated" });
     }
 };
+
+shopController.validateAdmin = (req, res, next) => {
+    if (req.session?.member?.mb_type === "ADMIN") {
+        req.member = req.session.member;
+        next();
+    } else {
+        const html = `<script>
+            alert('Admin page: Permission denied')
+            window.location.replace('/shop')
+        </script>`;
+    res.end(html);
+  }
+};
+
+shopController.getAllShop = async (req, res) => {
+    try {
+         console.log("GET: cont/getAllShop");
+ 
+         const shop = new Shop;
+         const shop_data = await shop.getAllShopData();
+         res.render("all-shop", {shop_data: shop_data });       
+     } catch (err) {
+         console.log(`ERROR, cont/getAllShop, ${err.message}`);
+         res.json({ state: "fail", message: err.message });
+     }
+ };
+ 
+ shopController.updateShopByAdmin = async (req, res) => {
+     try {
+         console.log("GET cont/updateShopByAdmin");
+ 
+         const shop = new Shop();
+         const result = await shop.updateShopByAdminData(req.body);
+         await res.json({ state: "success", data: result });
+ 
+     } catch (err) {
+         console.log(`ERROR, cont/updateShopByAdmin, ${err.message} `);
+         res.json({ state: "fail", message: err.message });
+     }
+ };

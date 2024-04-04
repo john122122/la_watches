@@ -7,25 +7,25 @@
     <div class="group_name">
       <ul class="nav justify-content-center">
         <li class="nav-item" style="cursor: pointer">
-         <a class="nav-link active" href="/shop">Home</a>
+          <a class="nav-link active" href="/shop">Home</a>
         </li>
         <li class="nav-item" style="cursor: pointer">
-         <a class="nav-link active" href="/shop/products/menu">My Shop</a>
+          <a class="nav-link active" href="/shop/products/menu">My Shop</a>
         </li>
         <li class="nav-item" style="cursor: pointer">
-         <a class="nav-link active" href="/shop/logout">Logout</a>
+          <a class="nav-link active" href="/shop/logout">Logout</a>
         </li>
       </ul>
     </div>
+
     <div class="shop_menu_frame">
       <div class="shop_container">
-
         <div class="item_table">
-             <span class="new_product_txt">
+            <span class="new_product_txt">
               <%= member.mb_nick.toUpperCase() %> Product Menu
-          </span>
+            </span>
           <table class="table table-bordered table-hover">
-             <thead class="thead-light">
+            <thead class="thead-light">
               <th scope="col">T/r</th>
               <th scope="col">Product name</th>
               <th scope="col">Product type</th>
@@ -33,23 +33,23 @@
               <th scope="col">Product price</th>
               <th scope="col">Product residual amount</th>
               <th scope="col">Product status</th>
-             </thead>
+            </thead>
              <% shop_data.map((value, key) => { %>
               <tbody style="background: white;">
-               <td><%= key +1 %></td>
-               <td><%= value.product_name %></td>
-               <td><%= value.product_collection %></td>
-               <td><%= value.product_collection === 'drink' ? value.product_volume
+                <td><%= key +1 %></td>
+                <td><%= value.product_name %></td>
+                <td><%= value.product_collection %></td>
+                <td><%= value.product_collection === 'drink' ? value.product_volume
                   : value.product_size %>
               </td>
-               <td><%= value.product_price %></td>
-               <td><%= value.product_left_cnt %></td>
-               <td>
+                <td><%= value.product_price %></td>
+                <td><%= value.product_left_cnt %></td>
+                <td>
                   <select class="spec_select new_product_status"  id="<%= value.id %>">
-                      <option value="PAUSED"<%= value.product_status === 'PAUSED' ?'selected' : '' %> >PAUSED</option>
-                      <option value="PROCESS"<%= value.product_status === 'PROCESS' ?'selected' : '' %> >PROCESS</option>
+                    <option value="PAUSED"<%= value.product_status === 'PAUSED' ?'selected' : '' %> >PAUSED</option>
+                    <option value="PROCESS"<%= value.product_status === 'PROCESS' ?'selected' : '' %> >PROCESS</option>
                   </select>
-               </td>
+                </td>
               </tbody>
              <% }); %>
           </table>
@@ -68,27 +68,27 @@
 
           <div>
             <div class="long_input">
-                <label for="">Product name</label>
-                <input type="text" placeholder="Product name" name="product_name" class="product_name"/>               
+              <label for="">Product name</label>
+              <input type="text" placeholder="Product name" name="product_name" class="product_name"/>               
             </div>
             <input name="product_status" value="PAUSED" class="product_status" hidden />
           </div>
             
           <div class="half_input_frame">
             <div class="half_input">
-                <label for="">Product price</label>
-                <input type="number" placeholder="Product price" name="product_price" class="product_price"/>      
+              <label for="">Product price</label>
+              <input type="number" placeholder="Product price" name="product_price" class="product_price"/>      
             </div>
 
             <div class="half_input">
-                <label for="">Product residual count</label>
-                <input type="number" placeholder="Product residual count" name="product_left_cnt" class="product_left_cnt"/>               
+              <label for="">Product residual count</label>
+              <input type="number" placeholder="Product residual count" name="product_left_cnt" class="product_left_cnt"/>               
             </div>
           </div>
 
           <div class="half_input_frame">
             <div class="half_input">
-                <label for="">Product type</label>
+              <label for="">Product type</label>
                 <select class="product_collection" name="product_collection">
                     <option value="suit" selected >Suit</option>
                     <option value="pants">Pants</option>
@@ -101,26 +101,25 @@
             </div>
 
             <div class="half_input" id="product_size">
-                <label for="">Product size</label>
+              <label for="">Product size</label>
                 <select class="product_size" name="product_size">
-                    <option value="s" >S</option>
-                    <option value="m" >M</option>
-                    <option value="l" >L</option>
-                    <option value="xl" >XL</option>
-                    <option value="set" >Set</option>
-                
+                  <option value="s" >S</option>
+                  <option value="m" >M</option>
+                  <option value="l" >L</option>
+                  <option value="xl" >XL</option>
+                  <option value="set" >Set</option>             
                 </select>
             </div>
 
             <div class="half_input" id="product_volume" style="display: none;">
-             <label for="">Perfume volume</label>
-             <select class="product_volume" name="product_volume">
-                <option value="500" >500 ml</option>
-                <option value="1000" selected >1000 ml</option>
-                <option value="1200" >1200 ml</option>
-                <option value="1500" >1500 ml</option>
-                <option value="2000" >2000 ml</option>    
-            </select>
+              <label for="">Perfume volume</label>
+                <select class="product_volume" name="product_volume">
+                  <option value="500" >500 ml</option>
+                  <option value="1000" selected >1000 ml</option>
+                  <option value="1200" >1200 ml</option>
+                  <option value="1500" >1500 ml</option>
+                  <option value="2000" >2000 ml</option>    
+                </select>
             </div>
           </div>
           
@@ -174,11 +173,11 @@
             if(selected_value === 'perfume') {
                 $("#product_volume").show();
                 $("#product_size").hide();
-            } else{
+            } else {
                 $("#product_volume").hide();
                 $("#product_size").show();
             }
-         });
+          });
 
         $(".hiding_btn").on("click", () =>{
             $(".product_container").slideToggle(500);
@@ -194,14 +193,14 @@
             const response = await axios.post(`/shop/products/edit/${id}`, {id: id, product_status: product_status});
             const result = response.data;
             console.log("result:", result);
-        if(result.state =='success') {
+        if (result.state =='success') {
             alert('success');
             location.reload();
         } else {
             alert(result.message);
         }
 
-        }catch {
+        } catch {
             console.log('updateChosenProduct err:', err);
         }
       })
@@ -227,9 +226,9 @@
             alert(`Please enter all information correctly`);
             return false;
         } else return true;
-    } 
+      } 
 
-       function previewFileHandler(input, order) {
+      function previewFileHandler(input, order) {
         const image_class_name = input.className;
         const file = $(`.${image_class_name}`).get(0).files[0],
         fileType = file['type'],
@@ -247,7 +246,7 @@
         }
       }
     }
-   </script>
+  </script>
 </body>
 
 <%- include('includes/footer') %>
