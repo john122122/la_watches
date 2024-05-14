@@ -1,1 +1,63 @@
-<h1>Passed here</h1>
+<%- include('includes/header') %>
+
+<link rel="stylesheet" type="text/css" href="/css/menu.css"/>
+
+<body>
+  <div id="main_container">
+
+    <div class="group_name">
+      <ul class="nav justify-content-center">
+        <li class="nav-item" style="cursor: pointer">
+          <a class="nav-link active"  href="/shop">Home</a>
+        </li>
+        <li class="nav-item" style="cursor: pointer">
+          <a class="nav-link"  href="/shop/all-shop">All Stores</a>
+        </li>
+        <li class="nav-item" style="cursor: pointer">
+          <a class="nav-link"  href="/shop/login">Logout</a>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="shop_menu_frame">
+      <div class="shop_container">
+        <div class="store_table">
+          <span class="new_product_txt"> List of All Store </span>
+
+          <table class="table table-hover table-sm">
+            <thead class="thead-light">
+              <tr class="thead-light">
+                <th scope="col">S/n</th>
+                <th scope="col">Store name</th>
+                <th scope="col">Store phone number</th>
+                <th scope="col">Top Stores</th>
+                <th scope="col">Store Status</th>
+              </tr>
+            </thead>
+
+            <tbody style="background: white">
+                <td>1</td>
+                <td>Marsel</td>
+                <td>998902334344</td>
+                <td style="width: 13%;">
+                    <label class="switch">
+                      <input type="checkbox" class="mb_top">
+                      <span class="slider around"></span>
+                    </label>
+                </td>
+                <td style="width: 13%;">
+                  <select class="spec_select mb_status">
+                    <option value="ONPAUSE">ONPAUSE</option>
+                    <option value="ACTIVE" >ACTIVE </option>
+                    <option value="DELETED">DELETED</option>
+                  </select>
+                </td>
+            </tbody>
+          </table>
+        </div>  
+      </div>
+    </div>
+  </div>
+</body>
+
+<%- include('includes/footer') %>

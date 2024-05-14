@@ -16,10 +16,10 @@ router_bssr
 
 router_bssr
     .get(
-        "/signup",
+        "/sign-up",
         shopController.getSignupMyShop)
     .post(
-        "/signup",
+        "/sign-up",
         uploader_members.single("shop_img"),
         shopController.signupProcess);
 

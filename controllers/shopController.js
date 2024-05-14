@@ -82,7 +82,7 @@ shopController.loginProcess = async (req, res) => {
         req.session.member = result;
         req.session.save(function () {
             result.mb_type ==="ADMIN"
-                ? res.redirect("/shop/all-shop", "/shop/events")
+                ? res.redirect("/shop/all-shop")
                 : res.redirect("/shop/products/menu");
         });
     } catch (err) {
@@ -139,9 +139,9 @@ shopController.getAllShop = async (req, res) => {
     try {
          console.log("GET: cont/getAllShop");
  
-         const shop = new Shop;
-         const shop_data = await shop.getAllShopData();
-         res.render("all-shop", {shop_data: shop_data });       
+        //  const shop = new Shop;
+        //  const shop_data = await shop.getAllShopData();
+         res.render("all-shop");       
      } catch (err) {
          console.log(`ERROR, cont/getAllShop, ${err.message}`);
          res.json({ state: "fail", message: err.message });
