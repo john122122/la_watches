@@ -124,11 +124,11 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-.slider.around {
+.slider.round {
   border-radius: 34px;
 }
 
-.slider.around:before {
+.slideround:before {
   border-radius: 50%;
 }
 
@@ -148,7 +148,6 @@ input:checked + .slider:before {
   font-size: 30px;
   line-height: 25px;
   color: #ffffff;
- 
 }
 
 .long_input {
@@ -159,6 +158,7 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
 }
+
 .long_input label {
   font-family: 'Source Serif Pro';
   font-style: normal;
@@ -211,6 +211,7 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
 }
+
 .half_input label {
   font-family: 'Source Serif Pro';
   font-style: normal;

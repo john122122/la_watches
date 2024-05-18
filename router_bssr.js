@@ -63,14 +63,14 @@ router_bssr
 
 router_bssr
     .get(
-        "/all-shop",
+        "/all-shops",
         shopController.validateAdmin,
         shopController.getAllShop
 );
 
 router_bssr
     .post(
-        "/all-shop/edit",
+        "/all-shops/edit",
         shopController.validateAdmin,
         shopController.updateShopByAdmin
 );

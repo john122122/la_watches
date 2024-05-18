@@ -2,6 +2,7 @@ const Member = require("../models/Member");
 const Product = require("../models/Product");
 const Definer = require("../lib/mistake");
 const assert = require("assert");
+const Shop = require("../models/Shop");
 
 let shopController = module.exports;
 
@@ -82,7 +83,7 @@ shopController.loginProcess = async (req, res) => {
         req.session.member = result;
         req.session.save(function () {
             result.mb_type ==="ADMIN"
-                ? res.redirect("/shop/all-shop")
+                ? res.redirect("/shop/all-shops")
                 : res.redirect("/shop/products/menu");
         });
     } catch (err) {
@@ -131,33 +132,33 @@ shopController.validateAdmin = (req, res, next) => {
             alert('Admin page: Permission denied')
             window.location.replace('/shop')
         </script>`;
-    res.end(html);
-  }
+       res.end(html);
+    }
 };
 
 shopController.getAllShop = async (req, res) => {
     try {
-         console.log("GET: cont/getAllShop");
+        console.log("GET: cont/getAllShop");
  
-        //  const shop = new Shop;
-        //  const shop_data = await shop.getAllShopData();
-         res.render("all-shop");       
-     } catch (err) {
-         console.log(`ERROR, cont/getAllShop, ${err.message}`);
-         res.json({ state: "fail", message: err.message });
-     }
- };
+        const shop = new Shop();
+        const shop_data = await shop.getAllShopData();
+        res.render("all-shop", { shop_data: shop_data });       
+    } catch (err) {
+        console.log(`ERROR, cont/getAllShop, ${err.message}`);
+        res.json({ state: "fail", message: err.message });
+    }
+};
  
- shopController.updateShopByAdmin = async (req, res) => {
-     try {
-         console.log("GET cont/updateShopByAdmin");
+shopController.updateShopByAdmin = async (req, res) => {
+    try {
+        console.log("GET cont/updateShopByAdmin");
  
-         const shop = new Shop();
-         const result = await shop.updateShopByAdminData(req.body);
-         await res.json({ state: "success", data: result });
+        const shop = new Shop();
+        const result = await shop.updateShopByAdminData(req.body);
+        await res.json({ state: "success", data: result });
  
-     } catch (err) {
-         console.log(`ERROR, cont/updateShopByAdmin, ${err.message} `);
-         res.json({ state: "fail", message: err.message });
-     }
- };
+    } catch (err) {
+        console.log(`ERROR, cont/updateShopByAdmin, ${err.message} `);
+        res.json({ state: "fail", message: err.message });
+    }
+};
