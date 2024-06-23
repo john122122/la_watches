@@ -1,12 +1,12 @@
 const assert = require("assert");
 const Definer = require("../lib/mistake");
-const MemberModel = require("../schema/member.model");
+const memberModel = require("../schema/member.model");
 const Member = require("../models/Member");
 const { shapeIntoMongooseObjectId } = require("../lib/config");
 
 class Shop {
   constructor() {
-    this.memberModel = MemberModel;
+    this.memberModel = memberModel;
   }
 
 async getAllShopData() {

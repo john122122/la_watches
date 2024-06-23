@@ -1,19 +1,19 @@
 // const { 
 //     shapeIntoMongooseObjectId, 
-//     lookup_auth_member_following, 
-//     lookup_auth_member_liked
+//     // lookup_auth_member_following, 
+//     // lookup_auth_member_liked
 //   } = require("../lib/config");
-  const { shapeIntoMongooseObjectId } = require("../lib/config");
 const Definer = require("../lib/mistake");
-  const MemberModel = require("../schema/member.model");
-  const assert = require("assert");
-  const bcrypt = require("bcryptjs");
-//   const View = require("./View");
-//   const Like = require("./Like");
+const assert = require("assert");
+const bcrypt = require("bcryptjs");
+const View = require("./View");
+const { shapeIntoMongooseObjectId } = require("../lib/config");
+const memberModel = require("../schema/member.model");
+//const Like = require("./Like");
   
 class Member {     
     constructor() {
-        this.memberModel = MemberModel;        
+        this.memberModel = memberModel;        
     }
 
     async loginData(input) {
@@ -64,8 +64,11 @@ async signupData(input) {
 async getChosenMemberData(member, id) {
     try {         
       id = shapeIntoMongooseObjectId(id);
-      
-      console.log("member:::", member)
+      console.log("member:::", member);
+
+      if (member) {
+        await this.viewChosenItemByMember(member, id, "member");
+      }
 
         const result = await this.memberModel
           .aggregate([
@@ -80,7 +83,30 @@ async getChosenMemberData(member, id) {
         } catch (err) {            
           throw err;           
         }       
-    }   
+  }  
+  
+  async viewChosenItemByMember(member, view_ref_id, group_type) {
+    try {
+      view_ref_id = shapeIntoMongooseObjectId(view_ref_id);
+      const mb_id = shapeIntoMongooseObjectId(member._id);
+
+      const view = new View(mb_id);
+      const isValid = await view.validateChosenTarget(view_ref_id, group_type);
+      assert.ok(isValid, Definer.general_err2);
+
+      const doesExist = await view.checkViewExistence(view_ref_id);
+      console.log("doesExist:", doesExist);
+
+      if (!doesExist) {
+        const result = await view.insertMemberView(view_ref_id, group_type);
+        assert.ok(result, Definer.article_err1);
+      }
+      return true;
+      
+    } catch (err) {
+      throw err;
+    }
+  }
 }
   
 module.exports = Member;
