@@ -1,12 +1,12 @@
 const assert = require("assert");
 const { shapeIntoMongooseObjectId, lookup_auth_member_liked } = require("../lib/config");
-const ProductModel = require("../schema/product.model");
+const productModel = require("../schema/product.model");
 const Definer = require("../lib/mistake");
 const Member = require("./Member");
 
 class Product {
     constructor() {
-        this.productModel = ProductModel;
+        this.productModel = productModel;
     }
 
     async getAllProductsData(member, data) {
@@ -34,7 +34,6 @@ class Product {
                 ])
                 .exec();
 
-          // codimizda qayeridadir xatolik bulsa shu orqali tekshiramiz
           assert.ok(result, Definer.general_err1);
           return result;
         } catch (err) {
@@ -66,7 +65,7 @@ class Product {
       }
     } 
 
-    async getAllProductsDataShop(member) {
+    async  getAllProductsDataShop(member) {
         try {
             member._id = shapeIntoMongooseObjectId(member._id);
             const result = await this.productModel.find({

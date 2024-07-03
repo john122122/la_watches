@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const memberController = require("./controllers/memberController");
+const productController = require("./controllers/productController");
 
 /**********************************
  *          REST API              *
@@ -15,6 +16,11 @@ router.get("/member/:id",
     memberController.retrieveAuthMember,
     memberController.getChosenMember
 )
+
+// Product related routers
+router.post("/products",
+    memberController.retrieveAuthMember,
+    productController.getAllProducts);
 
 // others 
 router.get("/menu", function (req, res) {
